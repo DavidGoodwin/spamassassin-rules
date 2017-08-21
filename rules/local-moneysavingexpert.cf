@@ -1,0 +1,9 @@
+# some spam comes from moneysavingexpert!
+
+header   __PP_LOCAL_MSE_1 From =~ /moneysavingexpert.com/i
+header   __PP_LOCAL_MSE_2 Return-Path =~ /moneysavingexpert.com/i
+
+meta PP_LOCAL_MSE_1 __PP_LOCAL_MSE_1 + __PP_LOCAL_MSE_2
+describe PP_LOCAL_MSE_1 Unwanted bulk mail (from MoneySavingExpert)
+score    PP_LOCAL_MSE_1 14
+

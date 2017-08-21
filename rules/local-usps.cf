@@ -1,0 +1,20 @@
+# USPS.com delivery notification crap
+
+header __PP_LOCAL_USPS_01 Subject =~ /(Ship|Delivery) (Notification|Status)/i
+body   __PP_LOCAL_USPS_02 /\s{1,3}(Courier was unable to deliver the parcel to you|Courier service could not make the delivery of your parcel)./i
+body   __PP_LOCAL_USPS_03 /Print Shipping (Label|Receipt)/i
+body   __PP_LOCAL_USPS_04 /\s{1,3}USPS.COM/
+body   __PP_LOCAL_USPS_05 /Copyright 2014 .*All Rights Reserved./i
+
+# Note the negation on this header in the meta rule below. i.e. it can't match usps.co[m|uk etc]
+header __PP_LOCAL_USPS_09 From =~ /\@.*usps.*/i
+
+meta PP_LOCAL_USPS (( __PP_LOCAL_USPS_01 + __PP_LOCAL_USPS_02 + __PP_LOCAL_USPS_03 + __PP_LOCAL_USPS_04 + __PP_LOCAL_USPS_05 + ! __PP_LOCAL_USPS_09 )) > 5
+
+describe PP_LOCAL_USPS Looks like a USPS phishing
+score PP_LOCAL_USPS 15
+
+
+header PP_LOCAL_USPS_VALID From =~ /\@ups.com/i
+describe PP_LOCAL_USPS_VALID From @USPS.com
+score PP_LOCAL_USPS_VALID -2

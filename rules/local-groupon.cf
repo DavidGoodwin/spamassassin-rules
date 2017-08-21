@@ -1,0 +1,12 @@
+
+header __PP_LOCAL_GROUPON_1 X-Complaints-To =~ /[\w]/
+header __PP_LOCAL_GROUPON_2 X-Abuse =~ /[\w]/
+header __PP_LOCAL_GROUPON_3 X-Campaign  =~ /[\w]/i
+header __PP_LOCAL_GROUPON_4 List-Id =~ /[\w]/i
+header __PP_LOCAL_GROUPON_5 List-Unsubscribe =~ /[\w]/i
+header __PP_LOCAL_GROUPON_6 Subject =~ /Groupon/i
+body __PP_LOCAL_GROUPON_7 /deals from Groupon/i
+
+meta PP_LOCAL_GROUPON (( __PP_LOCAL_GROUPON_1 + __PP_LOCAL_GROUPON_2 + __PP_LOCAL_GROUPON_3 + __PP_LOCAL_GROUPON_4 + __PP_LOCAL_GROUPON_5 + __PP_LOCAL_GROUPON_6 + __PP_LOCAL_GROUPON_7 )) > 5
+describe PP_LOCAL_GROUPON Unwanted Spam (Groupon)
+score PP_LOCAL_GROUPON 10

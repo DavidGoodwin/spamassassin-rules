@@ -1,0 +1,10 @@
+
+header __PP_LOCAL_EBUYER_01 From =~ /specialoffers\@e-ebuyer.com/i
+header __PP_LOCAL_EBUYER_02 Message-ID =~ /e-ebuyer.com>$/i
+body   __PP_LOCAL_EBUYER_03 /ebuyer.com/
+
+meta PP_LOCAL_EBUYER_SPAM (( __PP_LOCAL_EBUYER_01 + __PP_LOCAL_EBUYER_02 + __PP_LOCAL_EBUYER_03 )) > 2
+
+describe PP_LOCAL_EBUYER_SPAM Looks like a EBUYER guess how much spam
+score PP_LOCAL_EBUYER_SPAM 5
+

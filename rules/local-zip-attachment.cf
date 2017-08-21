@@ -1,0 +1,3 @@
+mimeheader PP_LOCAL_ZIP_1 Content-Disposition =~ /\.zip/
+describe PP_LOCAL_ZIP_1 Zip file hiding something perhaps?
+score PP_LOCAL_ZIP_1 1

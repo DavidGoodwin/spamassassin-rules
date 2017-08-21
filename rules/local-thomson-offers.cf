@@ -1,0 +1,12 @@
+# Fake O2 bill(s0
+
+header __PP_LOCAL_THOMSON_OFFERS_01 List-Unsubscribe =~ /smtpstart/i
+header __PP_LOCAL_THOMSON_OFFERS_02 From =~ /thomsonoffers.com>$/
+header __PP_LOCAL_THOMSON_OFFERS_03 Organization =~ /Thomson Offers/i
+body   __PP_LOCAL_THOMSON_OFFERS_04 /thomsonoffers.com/i
+
+meta PP_LOCAL_THOMSON_OFFERS (( __PP_LOCAL_THOMSON_OFFERS_01 + __PP_LOCAL_THOMSON_OFFERS_02 + __PP_LOCAL_THOMSON_OFFERS_03 + __PP_LOCAL_THOMSON_OFFERS_04 )) > 2
+
+describe PP_LOCAL_THOMSON_OFFERS Looks like a spam
+score    PP_LOCAL_THOMSON_OFFERS 15
+

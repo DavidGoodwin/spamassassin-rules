@@ -1,0 +1,9 @@
+body   __PP_LOCAL_B2CLIST_01 /\b(b2c|b2b|business-to-business)\b/i
+body   __PP_LOCAL_B2CLIST_02 /\b(marketing|data partners|your partners)\b/i
+body   __PP_LOCAL_B2CLIST_03 /\b(million)\b/i
+body   __PP_LOCAL_B2CLIST_04 /\b(emails delivered|telemarketing|fax marketing|direct marketing|seo|ppc|sem)\b/i
+
+meta PP_LOCAL_B2CLIST_SPAM (( __PP_LOCAL_B2CLIST_01 + __PP_LOCAL_B2CLIST_02 + __PP_LOCAL_B2CLIST_03 + __PP_LOCAL_B2CLIST_04 )) > 2
+
+describe PP_LOCAL_B2CLIST_SPAM Looks like a spammy marketing email (seo/b2c/b2b etc)
+score PP_LOCAL_B2CLIST_SPAM 5

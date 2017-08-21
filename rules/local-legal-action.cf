@@ -1,0 +1,14 @@
+# crap threatening legal action
+
+header __PP_LOCAL_FAKE_LEGAL_01 Subject =~ /legal action/i
+body   __PP_LOCAL_FAKE_LEGAL_02 /previous reminders/i
+body   __PP_LOCAL_FAKE_LEGAL_03 /due for payment/i
+body   __PP_LOCAL_FAKE_LEGAL_04 /PDPAC/i
+body   __PP_LOCAL_FAKE_LEGAL_05 /\#575757/
+body   __PP_LOCAL_FAKE_LEGAL_06 /credit terms stipulate full payment within 3/i
+
+meta PP_LOCAL_FAKE_LEGAL_INVOICE (( __PP_LOCAL_FAKE_LEGAL_01 + __PP_LOCAL_FAKE_LEGAL_02 + __PP_LOCAL_FAKE_LEGAL_03 + __PP_LOCAL_FAKE_LEGAL_04 + __PP_LOCAL_FAKE_LEGAL_05 + __PP_LOCAL_FAKE_LEGAL_06 )) > 2
+
+describe PP_LOCAL_FAKE_LEGAL_INVOICE Looks like an phishing invoice
+score    PP_LOCAL_FAKE_LEGAL_INVOICE 15
+

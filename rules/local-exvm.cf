@@ -1,0 +1,13 @@
+# Exvm.com look like spammy newsletters
+
+header PP_LOCAL_EXVM From =~ /\@.*\.exvm\.com/i
+describe PP_LOCAL_EXVM Unwanted bulk mail (from exvm.com)
+score PP_LOCAL_EXVM 5
+
+header PP_LOCAL_AUTOENROL Subject =~ /Auto enrolment seminar dates/i
+describe PP_LOCAL_AUTOENROL Unwanted bulk mail (seminar dates subject)
+score PP_LOCAL_AUTOENROL 4
+
+header PP_LOCAL_EXVM_ID X-EVCampaignID =~ /[0-9]/
+describe PP_LOCAL_EXVM_ID Unwanted bulk mail (header)
+score PP_LOCAL_EXVM_ID 5

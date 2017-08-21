@@ -1,0 +1,23 @@
+# india based spam
+
+body  __PP_LOCAL_INDIA_01 /\b(outsourcing|india|indian|delhi|eastern europe)/i
+header __PP_LOCAL_INDIA_02 Subject =~ /(outsourcing|seo|website|service|development|services|iphone|optimization|android|meeting with)/i
+body  __PP_LOCAL_INDIA_03 /(development company|web services|marketing company|software development)/i
+body  __PP_LOCAL_INDIA_04 /(top 10|optimize|keywords|optimization)/i
+body  __PP_LOCAL_INDIA_05 /(java|iphone|android|php|ipad)/i
+
+body  __PP_LOCAL_INDIA_07 /(outsource|outsourcing|offshore|outsourced|remote development|nearshore development|development centers in)/i
+body  __PP_LOCAL_INDIA_08 /(app|apps|web|mobile|website|saas)\s+(development|application|solution|design|white ?hat)/i
+body  __PP_LOCAL_INDIA_09 /(discuss requirements|business relationship|alliance|business development|)/i
+
+body  __PP_LOCAL_INDIA_12 /(experience|client (testimonials|references)|references are available)/i
+body  __PP_LOCAL_INDIA_13 /(seo|google|search engine)/i
+
+body  __PP_LOCAL_INDIA_14 /(lower cost|as low as|per hour|low cost)/i
+body  __PP_LOCAL_INDIA_15 /(CAN SPAM|CAN-SPAM|check if you had received my (previous?) (e?)mail|not spammers|opt out by|on my previous email|un-?subscribe|do not want to receive|phplist)/i
+body  __PP_LOCAL_INDIA_16 /linkedin/i
+
+meta PP_LOCAL_INDIA_WEBDEV ( __PP_LOCAL_INDIA_01  && ((  __PP_LOCAL_INDIA_02 + __PP_LOCAL_INDIA_03 + __PP_LOCAL_INDIA_04 + __PP_LOCAL_INDIA_05 + __PP_LOCAL_INDIA_07 + __PP_LOCAL_INDIA_08 + __PP_LOCAL_INDIA_09 +  __PP_LOCAL_INDIA_12 + __PP_LOCAL_INDIA_13 + __PP_LOCAL_INDIA_14 + __PP_LOCAL_INDIA_15 + __PP_LOCAL_INDIA_16 )) > 4)
+describe PP_LOCAL_INDIA_WEBDEV Web dev spam from India
+score PP_LOCAL_INDIA_WEBDEV 12.0
+

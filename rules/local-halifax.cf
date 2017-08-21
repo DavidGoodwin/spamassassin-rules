@@ -1,0 +1,19 @@
+body   __PP_LOCAL_HALIFAX_01 /www.halifaxbank.com/i
+body   __PP_LOCAL_HALIFAX_02 /Halifax Bank/i
+header __PP_LOCAL_HALIFAX_03 Subject =~ /Account Notification/i
+
+
+meta PP_LOCAL_HALIFAX_PHISHING_01 (( __PP_LOCAL_HALIFAX_01 + __PP_LOCAL_HALIFAX_02 + __PP_LOCAL_HALIFAX_03 )) > 2
+score PP_LOCAL_HALIFAX_PHISHING_01 10
+describe PP_LOCAL_HALIFAX_PHISHING_01 Looks like Halifax Phishing
+
+header __PP_LOCAL_HALIFAX_04 Subject =~ /Halifax/i
+header __PP_LOCAL_HALIFAX_05 From =~ /Halifax/i
+header __PP_LOCAL_HALIFAX_06 From !~ /<.*Halifax.*>/i
+body   __PP_LOCAL_HALIFAX_07 /\bHalifax\b/i
+
+meta PP_LOCAL_HALIFAX_PHISHING_02 (( __PP_LOCAL_HALIFAX_04 + __PP_LOCAL_HALIFAX_05 + __PP_LOCAL_HALIFAX_06  + __PP_LOCAL_HALIFAX_07 )) > 3
+describe PP_LOCAL_HALIFAX_PHISHING_02 Looks like Halifax Phishing(2)
+score PP_LOCAL_HALIFAX_PHISHING_02 10
+
+

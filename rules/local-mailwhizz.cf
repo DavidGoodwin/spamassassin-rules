@@ -1,0 +1,9 @@
+header __PP_MAILWHIZZ_1 X-Sender =~ /[a-z0-9]/i
+header __PP_MAILWHIZZ_2 X-Mw-Mailer =~ /[a-z0-9]/i
+header __PP_MAILWHIZZ_3 X-Mw-Subscriber-Uid =~ /[a-z0-9]/i
+header __PP_MAILWHIZZ_4 X-Mw-Campaign-Uid =~ /[a-z0-9]/i
+
+meta PP_LOCAL_MAILWHIZZ (( __PP_MAILWHIZZ_1 + __PP_MAILWHIZZ_2 + __PP_MAILWHIZZ_3 + __PP_MAILWHIZZ_4 )) > 3
+describe PP_LOCAL_MAILWHIZZ Repeating spam (mailwhizz)
+score PP_LOCAL_MAILWHIZZ 4
+

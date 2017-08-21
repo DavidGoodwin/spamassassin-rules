@@ -1,0 +1,6 @@
+header   __PP_LOCAL_MADDEALS_1 From =~ /\w\@maddeal\.com/i
+header   __PP_LOCAL_MADDEALS_2 Message-ID =~ /maddeal\.com/i 
+
+meta   PP_LOCAL_MADDEALS (( __PP_LOCAL_MADDEALS_1 + __PP_LOCAL_MADDEALS_2  )) > 1
+score  PP_LOCAL_MADDEALS 8
+describe PP_LOCAL_MADDEALS MadDeals spam

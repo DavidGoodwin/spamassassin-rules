@@ -1,0 +1,8 @@
+
+body   __PP_LOCAL_WINNER_1  /You are a winner, for more details contact/i
+header __PP_LOCAL_WINNER_2  Subject =~ /^Hello$/i
+header __PP_LOCAL_WINNER_3  To =~ /^Recipients <>$/i
+
+meta PP_LOCAL_WINNER (( __PP_LOCAL_WINNER_1 + __PP_LOCAL_WINNER_2 + __PP_LOCAL_WINNER_3 )) > 2
+describe PP_LOCAL_WINNER Unwanted Spam (fake lottery)
+score PP_LOCAL_WINNER 10

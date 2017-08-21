@@ -1,0 +1,18 @@
+header __RCVD_IN_JMF eval:check_rbl('JMF-lastexternal','hostkarma.junkemailfilter.com.')
+describe __RCVD_IN_JMF Sender listed in JunkEmailFilter
+tflags __RCVD_IN_JMF net
+ 
+header RCVD_IN_JMF_W eval:check_rbl_sub('JMF-lastexternal', '127.0.0.1')
+describe RCVD_IN_JMF_W Sender listed in JMF-WHITE
+tflags RCVD_IN_JMF_W net nice
+score RCVD_IN_JMF_W -1
+  
+header RCVD_IN_JMF_BL eval:check_rbl_sub('JMF-lastexternal', '127.0.0.2')
+describe RCVD_IN_JMF_BL Sender listed in JMF-BLACK
+tflags RCVD_IN_JMF_BL net
+score RCVD_IN_JMF_BL 3.0
+   
+header RCVD_IN_JMF_BR eval:check_rbl_sub('JMF-lastexternal', '127.0.0.4')
+describe RCVD_IN_JMF_BR Sender listed in JMF-BROWN
+tflags RCVD_IN_JMF_BR net
+score RCVD_IN_JMF_BR 1.0

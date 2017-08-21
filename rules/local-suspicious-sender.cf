@@ -1,0 +1,3 @@
+header PP_SUSPICIOUS_SENDER From =~ /^[a-z\.]+\@.*\s<.*\@/i
+describe PP_SUSPICIOUS_SENDER From: contains two email addresses
+score  PP_SUSPICIOUS_SENDER 2

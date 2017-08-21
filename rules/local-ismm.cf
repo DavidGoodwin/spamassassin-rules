@@ -1,0 +1,9 @@
+# ISMM.co.uk look like spammy newsletters
+
+header PP_LOCAL_ISMM From =~ /\@ebrief\.ismm\.co\.uk/i
+describe PP_LOCAL_ISMM Unwanted bulk mail (from ismm.co.uk)
+score PP_LOCAL_ISMM 8
+
+header PP_LOCAL_ISMM_1 X-sender =~ /ismm\.co\.uk/
+describe PP_LOCAL_ISMM_1 Unwanted bulk mail (header)
+score PP_LOCAL_ISMM_1 3

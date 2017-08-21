@@ -1,0 +1,9 @@
+
+header __PP_LOCAL_TREKMATES_GOOD_01 Message-Id =~ /junowebdesign.com/i
+header __PP_LOCAL_TREKMATES_GOOD_02 From =~ /customerservices\@trekmates/i
+header __PP_LOCAL_TREKMATES_GOOD_03 X-AntiAbuse =~ /[\w]/
+rawbody   __PP_LOCAL_TREKMATES_GOOD_04 /www\.trekmates\.co\.uk/
+
+meta PP_LOCAL_TREKMATES_GOOD_01 (( __PP_LOCAL_TREKMATES_GOOD_01 + __PP_LOCAL_TREKMATES_GOOD_02 + __PP_LOCAL_TREKMATES_GOOD_03 + __PP_LOCAL_TREKMATES_GOOD_04 )) > 3
+score PP_LOCAL_TREKMATES_GOOD_01 -10
+describe PP_LOCAL_TREKMATES_GOOD_01 Looks like Trekmates order

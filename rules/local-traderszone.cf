@@ -1,0 +1,15 @@
+header   PP_LOCAL_TRADERS_ZONE_1 Subject =~ /\w@[-a-z0-9\.]+ traders-zone/i
+describe PP_LOCAL_TRADERS_ZONE_1 Subject: TRADERS ZONE Spam
+score    PP_LOCAL_TRADERS_ZONE_1 8
+
+header __PP_LOCAL_TRADERS_ZONE_1 Organisation =~ /(BetterTrades|Markay Latimer)/i
+header __PP_LOCAL_TRADERS_ZONE_2 Subject =~ /John Carter$/i
+body   __PP_LOCAL_TRADERS_ZONE_3 /simpleroptions.com/i
+body   __PP_LOCAL_TRADERS_ZONE_4 /trading course/i
+body   __PP_LOCAL_TRADERS_ZONE_5 /(Hubert Senters|Carolyn Boroden|TradeTheMarkets|John Carter|Henry Gambell)/i
+body   __PP_LOCAL_TRADERS_ZONE_6 /MEGA Catalog/
+
+
+meta PP_LOCAL_TRADERS_ZONE_2 (( __PP_LOCAL_TRADERS_ZONE_1 + __PP_LOCAL_TRADERS_ZONE_2 + __PP_LOCAL_TRADERS_ZONE_3 + __PP_LOCAL_TRADERS_ZONE_4 + __PP_LOCAL_TRADERS_ZONE_5 + __PP_LOCAL_TRADERS_ZONE_6 )) > 4
+describe PP_LOCAL_TRADERS_ZONE_2 Trading Zone Spam.
+score PP_LOCAL_TRADERS_ZONE_2 8

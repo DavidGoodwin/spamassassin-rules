@@ -1,0 +1,8 @@
+
+header __PP_LOCAL_LLOYDS_PCI_01 From =~ /pciportal\@lloydsbankcardnetpcidss.com$/i
+header __PP_LOCAL_LLOYDS_PCI_02 Message-ID =~ /JavaMail.javamailuser\@localhost/i
+header __PP_LOCAL_LLOYDS_PCI_03 Received =~ /sysnet.ie/i
+
+meta PP_LOCAL_LLOYDS_PCI_01 (( __PP_LOCAL_LLOYDS_PCI_01 + __PP_LOCAL_LLOYDS_PCI_02 + __PP_LOCAL_LLOYDS_PCI_03 )) > 1
+describe PP_LOCAL_LLOYDS_PCI_01 Lloyds Bank PCI Portal. 
+score PP_LOCAL_LLOYDS_PCI_01 -8

@@ -1,0 +1,10 @@
+header __PP_LOCAL_CARD_BLOCKED_01 From =~ /bank/i
+header __PP_LOCAL_CARD_BLOCKED_02 Subject =~ /(credit|debit) card.*blocked/i
+body   __PP_LOCAL_CARD_BLOCKED_03 /(click the link|download our form|verify your account)/i
+body   __PP_LOCAL_CARD_BLOCKED_04 /Bank of scotland/
+
+meta PP_LOCAL_CARD_BLOCKED_PHISHING_01 (( __PP_LOCAL_CARD_BLOCKED_01 + __PP_LOCAL_CARD_BLOCKED_02 + __PP_LOCAL_CARD_BLOCKED_03 + __PP_LOCAL_CARD_BLOCKED_04 )) > 2
+
+score PP_LOCAL_CARD_BLOCKED_PHISHING_01 10
+describe PP_LOCAL_CARD_BLOCKED_PHISHING_01 Probably phishing
+

@@ -1,0 +1,13 @@
+# USPS.com delivery notification crap
+
+header __PP_LOCAL_FAKE_FB_01 Subject =~ /is now following you/i
+
+body   __PP_LOCAL_FAKE_FB_02 /Click here to discover/i
+body   __PP_LOCAL_FAKE_FB_03 /is now following you/i
+body   __PP_LOCAL_FAKE_FB_04 /I would like to add you as a friend/i
+body   __PP_LOCAL_FAKE_FB_05 /Click here to unsubscribe/i
+body   __PP_LOCAL_FAKE_FB_06 /uns_inviter.jsp/i
+
+meta PP_LOCAL_FAKE_FB (( __PP_LOCAL_FAKE_FB_01 + __PP_LOCAL_FAKE_FB_02 + __PP_LOCAL_FAKE_FB_03 + __PP_LOCAL_FAKE_FB_04 + __PP_LOCAL_FAKE_FB_05 + __PP_LOCAL_FAKE_FB_06 )) > 4
+describe PP_LOCAL_FAKE_FB Looks like a Fake Facebook spam
+score PP_LOCAL_FAKE_FB 15

@@ -1,0 +1,29 @@
+# barclaycard (ph|f)ishing.
+# if it looks like it's from BarclayCard but probably isn't..
+header __PP_LOCAL_BARCLAY_01 From =~ /Barclay/i
+header __PP_LOCAL_BARCLAY_02 Reply-To =~ /Barclay/i
+# presence of this.
+header __PP_LOCAL_BARCLAY_03 X-PHP-Originating-Script =~ /[a-z0-0]/i
+header __PP_LOCAL_BARCLAY_04 X-PHP-Script =~ /[a-z0-0]/i
+# body with one of these
+body   __PP_LOCAL_BARCLAY_05 /(online form|click here|verify your card|account restricted|verify your (identity|account))/i
+# signature, sort of.
+body   __PP_LOCAL_BARCLAY_06 /(Barclays Bank|Barclaycard|Barclay\s+card)/i
+body   __PP_LOCAL_BARCLAY_07 /(Joshua.*Campbell|following IP Address|suspicious activity)/i
+
+meta PP_LOCAL_BARCLAY_PHISHING_01 (( __PP_LOCAL_BARCLAY_01 + __PP_LOCAL_BARCLAY_02 + __PP_LOCAL_BARCLAY_03 + __PP_LOCAL_BARCLAY_04 + __PP_LOCAL_BARCLAY_05 + __PP_LOCAL_BARCLAY_06 + __PP_LOCAL_BARCLAY_07 )) > 3
+
+score PP_LOCAL_BARCLAY_PHISHING_01 10
+describe PP_LOCAL_BARCLAY_PHISHING_01 Probably Barclays or BarclayCard Phishing
+
+
+header __PP_LOCAL_BARCLAY_GOOD_01 Return-Path =~ /barclaycard.co.uk/i
+header __PP_LOCAL_BARCLAY_GOOD_02 Reply-To =~ /barclaycard.co.uk/i
+header __PP_LOCAL_BARCLAY_GOOD_03 Message-Id =~ /(chtah.net|cheetahmail.com)/i
+body   __PP_LOCAL_BARCLAY_GOOD_04 /mail.barclaycard.co.uk/
+body   __PP_LOCAL_BARCLAY_GOOD_05 /Hello [a-z]+/i
+
+meta PP_LOCAL_BARCLAY_GOOD_01 (( __PP_LOCAL_BARCLAY_GOOD_01 + __PP_LOCAL_BARCLAY_GOOD_02 + __PP_LOCAL_BARCLAY_GOOD_03 + __PP_LOCAL_BARCLAY_GOOD_04 + __PP_LOCAL_BARCLAY_GOOD_05 )) > 4
+score PP_LOCAL_BARCLAY_GOOD_01 -10
+describe PP_LOCAL_BARCLAY_GOOD_01 Looks like BarclayCard bill 
+

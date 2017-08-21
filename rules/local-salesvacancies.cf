@@ -1,0 +1,12 @@
+# Recruitment spam.... sort of.
+
+body   __PP_LOCAL_SALES_01 /\bSalesVacancies\b/i
+body   __PP_LOCAL_SALES_02 /\b(full CV access|unlimited access)\b/i
+body   __PP_LOCAL_SALES_03 /\b(job posting|recruitment)\b/i
+body   __PP_LOCAL_SALES_04 /\b(Package [0-9])\b/i
+body   __PP_LOCAL_SALES_05 /To unsubscribe/i
+
+meta PP_LOCAL_SALESVACANCIES (( __PP_LOCAL_SALES_01 + __PP_LOCAL_SALES_02 + __PP_LOCAL_SALES_03 + __PP_LOCAL_SALES_04 + __PP_LOCAL_SALES_05 )) > 3
+
+describe PP_LOCAL_SALESVACANCIES Looks like a spammy recuitment email
+score PP_LOCAL_SALESVACANCIES 5

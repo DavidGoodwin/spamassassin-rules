@@ -1,0 +1,12 @@
+# dropbox phishing
+
+
+header __PP_LOCAL_DROPBOX_01 From =~ /Dropbox/i
+header __PP_LOCAL_DROPBOX_02 From !~ /\@dropbox\.(com|co\.uk)>$/i
+body   __PP_LOCAL_DROPBOX_03 /\b(Dropbox)\b/i
+body   __PP_LOCAL_DROPBOX_04 /\b(View file)\b/i
+
+meta PP_LOCAL_DROPBOX_PHISHING_01 (( __PP_LOCAL_DROPBOX_01 + __PP_LOCAL_DROPBOX_02 + __PP_LOCAL_DROPBOX_03 + __PP_LOCAL_DROPBOX_04 )) > 3
+score PP_LOCAL_DROPBOX_PHISHING_01 5
+describe PP_LOCAL_DROPBOX_PHISHING_01 Looks like Dropbox.com Phishing
+

@@ -1,0 +1,13 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+body __INVOICE_ZIP_01 /\b(invoice|unpaid)\b/i
+header __INVOICE_ZIP_02 Subject =~ /(debt|invoice|toll)/i
+
+# attachment - something.zip
+mimeheader __ZIP_ATTACHMENT2  Content-Disposition =~ /\.zip/
+
+meta PP_LOCAL_INVOICE_ZIP (( __INVOICE_ZIP_01 + __INVOICE_ZIP_02 + __ZIP_ATTACHMENT2 )) > 2
+describe PP_LOCAL_INVOICE_ZIP Looks like a phony invoice/zip file 
+score PP_LOCAL_INVOICE_ZIP 4.0
+
+

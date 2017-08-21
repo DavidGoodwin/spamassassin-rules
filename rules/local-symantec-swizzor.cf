@@ -1,0 +1,18 @@
+# Penalise idiots sending white text in an email
+
+rawbody  PP_LOCAL_VIRUS_FAKE_01 /Swizzor.C-WORM/i
+describe PP_LOCAL_VIRUS_FAKE_01 Email contains fake virus alert
+score    PP_LOCAL_VIRUS_FAKE_01 30
+
+
+rawbody  PP_LOCAL_VIRUS_POSS_FAKE_01 /free removal tool/i
+describe PP_LOCAL_VIRUS_POSS_FAKE_01 Email may be trying to get you to download a fake virus scanning tool
+score    PP_LOCAL_VIRUS_POSS_FAKE_01 1
+
+rawbody  PP_LOCAL_VIRUS_POSS_FAKE_02 /your computer is infected/i
+describe PP_LOCAL_VIRUS_POSS_FAKE_02 Email may be trying to get you to download a fake virus scanning tool
+score    PP_LOCAL_VIRUS_POSS_FAKE_02 1
+
+rawbody  PP_LOCAL_VIRUS_POSS_FAKE_03 /click and download/i
+describe PP_LOCAL_VIRUS_POSS_FAKE_03 Email may be trying to get you to download something you should not.
+score    PP_LOCAL_VIRUS_POSS_FAKE_03 1

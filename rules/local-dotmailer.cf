@@ -1,0 +1,6 @@
+# some spam comes from dotmailer
+
+header PP_LOCAL_DMR_1 From =~ /\@cmp.dotmailer.co.uk/i
+describe PP_LOCAL_DMR_1 Unwanted bulk mail (from dotmailer.co.uk)
+score PP_LOCAL_DMR_1 7
+

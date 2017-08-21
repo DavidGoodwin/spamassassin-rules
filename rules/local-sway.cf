@@ -1,0 +1,9 @@
+header __PP_LOCAL_SWAY_01 From =~ /Find Sway <pleasereply\@findsway.com>/i
+header __PP_LOCAL_SWAY_02 DKIM-Signature =~ /findsway.com/
+
+body __PP_LOCAL_SWAY_03 /Find out on sway/i
+
+
+meta PP_LOCAL_SWAY (( __PP_LOCAL_SWAY_01 + __PP_LOCAL_SWAY_02 + __PP_LOCAL_SWAY_03 )) > 2
+describe PP_LOCAL_SWAY Looks like a dating email (Sway)
+score PP_LOCAL_SWAY 8.0

@@ -1,0 +1,18 @@
+# fake legal notice to appear thing
+
+header __PP_LOCAL_GREENWINICK_01 Subject =~ /Notice to appear/i
+header __PP_LOCAL_GREENWINICK_02 From =~ /GreenWinick Lawyers/
+body   __PP_LOCAL_GREENWINICK_03 /Notice to appear/i
+body   __PP_LOCAL_GREENWINICK_04 /Green Winick/i
+body   __PP_LOCAL_GREENWINICK_05 /2014 Green Winick/i
+body   __PP_LOCAL_GREENWINICK_06 /To view copy of the court notice/i
+
+
+
+#header __PP_LOCAL_GREENWINICK_09 From =~ /\@.*usps.*/i
+
+meta PP_LOCAL_GREENWINICK (( __PP_LOCAL_GREENWINICK_01 + __PP_LOCAL_GREENWINICK_02 + __PP_LOCAL_GREENWINICK_03 + __PP_LOCAL_GREENWINICK_04 + __PP_LOCAL_GREENWINICK_05 + __PP_LOCAL_GREENWINICK_06 )) > 4
+
+describe PP_LOCAL_GREENWINICK Looks like a Spam/Virus fake.
+score PP_LOCAL_GREENWINICK 15
+

@@ -1,0 +1,8 @@
+rawbody PP_LOCAL_WINDOWS_CHARSET_WIERD /charset=windows-874/i
+describe PP_LOCAL_WINDOWS_CHARSET_WIERD Weird Windows charset.(874)
+score PP_LOCAL_WINDOWS_CHARSET_WIERD 4
+
+rawbody PP_LOCAL_INCREMAIL_DIE /www.incredimail.com/i
+describe PP_LOCAL_INCREMAIL_DIE Disliked mailer (incredimail)
+score PP_LOCAL_INCREMAIL_DIE 6
+

@@ -1,0 +1,12 @@
+header __PP_LOCAL_FAT_01 List-Unsubscribe =~ /http/i
+body   __PP_LOCAL_FAT_02 /\b(fat|hungry)\b/i
+body   __PP_LOCAL_FAT_03 /\b(fat burning|burn off|unwanted fat|body mass)\b/i
+body   __PP_LOCAL_FAT_04 /\b(forward this to \d friends)\b/i
+body   __PP_LOCAL_FAT_05 /\b(gift of your choice)\b/i
+body   __PP_LOCAL_FAT_06 /\b(unsubscribe me|to unsubscribe)\b/i
+
+
+meta PP_LOCAL_FAT_SPAM (( __PP_LOCAL_FAT_01 + __PP_LOCAL_FAT_02 + __PP_LOCAL_FAT_03 + __PP_LOCAL_FAT_04 + __PP_LOCAL_FAT_05 + __PP_LOCAL_FAT_06)) > 3
+
+describe PP_LOCAL_FAT_SPAM Looks like a dieting email (spam)
+score PP_LOCAL_FAT_SPAM 7

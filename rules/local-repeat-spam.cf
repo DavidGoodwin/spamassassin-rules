@@ -1,0 +1,28 @@
+# Penalise idiots sending white text in an email
+
+body __REPEAT_1 /\b(follow up on an email that I sent you|receive(d?) my (e?)mail)\b/i
+header __REPEAT_2 From =~ /mhm\w+.co.uk/i
+header __REPEAT_3 X-CUSTID =~ /[a-z0-9]/i
+header __REPEAT_4 X-SENDID =~ /[a-z0-9]/i
+header __REPEAT_5 X-SERVER-ID =~ /[a-z0-9]/i
+header __REPEAT_6 X-CUSID =~ /[a-z0-9]/i
+
+meta     PP_LOCAL_REPEAT_FOLLOWUP (( __REPEAT_1 + __REPEAT_2 + __REPEAT_3 + __REPEAT_4 + __REPEAT_5  + __REPEAT_6 )) > 3
+describe PP_LOCAL_REPEAT_FOLLOWUP MHM....co.uk repeating/followup spam
+score    PP_LOCAL_REPEAT_FOLLOWUP 6
+
+meta     PP_LOCAL_MHMAIL (( __REPEAT_2 + __REPEAT_3 + __REPEAT_4 + __REPEAT_5 + __REPEAT_6 )) > 4
+describe PP_LOCAL_MHMAIL Bulk sender headers present.
+score    PP_LOCAL_MHMAIL 4
+
+
+header __MORE_REPEAT_1 X-MktArchive =~ /[a-z0-9]/i
+header __MORE_REPEAT_2 X-Binding =~ /[a-z0-9]/i
+header __MORE_REPEAT_3 X-MarketoID =~ /[a-z0-9]/i
+header __MORE_REPEAT_4 X-MSYS-API =~ /[a-z0-9]/i
+
+meta     PP_LOCAL_BULK (( __MORE_REPEAT_1 + __MORE_REPEAT_2 + __MORE_REPEAT_3 + __MORE_REPEAT_4 )) > 3
+describe PP_LOCAL_BULK Bulk sender headers present.
+score    PP_LOCAL_BULK 4
+
+

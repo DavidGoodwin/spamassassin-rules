@@ -1,0 +1,9 @@
+# 
+# Some spam has useful(?!) X-Mailer headers.
+
+header PP_LOCAL_SPAMMY_MAILER X-Mailer =~ /(WhatCounts|Antipathize|Penetrate)/i
+describe PP_LOCAL_SPAMMY_MAILER Spammy mailer (perhaps)
+score PP_LOCAL_SPAMMY_MAILER 3.0
+
+
+

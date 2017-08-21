@@ -1,0 +1,12 @@
+full PP_LOCAL_PHARMACY_01 /<img width=3D493 height=3D437 alt=3D""/
+describe PP_LOCAL_PHARMACY_01 PHARMACY 
+score    PP_LOCAL_PHARMACY_01 8
+
+rawbody PP_LOCAL_PHARMACY_02 /<html><head><title>\$subj<\/title>/
+describe PP_LOCAL_PHARMACY_02 PHARMACY 2
+score    PP_LOCAL_PHARMACY_02 8
+
+rawbody PP_LOCAL_PHARMACY_03 /<title>\$subj<\/title>/
+describe PP_LOCAL_PHARMACY_03 PHARMACY/Shopping 1
+score    PP_LOCAL_PHARMACY_03 8
+

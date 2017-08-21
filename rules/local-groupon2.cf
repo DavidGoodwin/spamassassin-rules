@@ -1,0 +1,12 @@
+
+header __PP_LOCAL_GROUPON2_1 X-RM-SendId =~ /[\w]/
+header __PP_LOCAL_GROUPON2_2 X-RPCampaign =~ /[\w]/
+header __PP_LOCAL_GROUPON2_3 X-RPTags =~ /[\w]/i
+header __PP_LOCAL_GROUPON2_4 X-Recruiting  =~ /[\w]/i
+header __PP_LOCAL_GROUPON2_5 X-RM-EmailName =~ /[\w]/i
+header __PP_LOCAL_GROUPON2_6 From =~ /Groupon/i
+body   __PP_LOCAL_GROUPON2_7 /groupon/i
+
+meta PP_LOCAL_GROUPON2 (( __PP_LOCAL_GROUPON2_1 + __PP_LOCAL_GROUPON2_2 + __PP_LOCAL_GROUPON2_3 + __PP_LOCAL_GROUPON2_4 + __PP_LOCAL_GROUPON2_5 + __PP_LOCAL_GROUPON2_6 + __PP_LOCAL_GROUPON2_7 )) > 5
+describe PP_LOCAL_GROUPON2 Unwanted Spam (Groupon)
+score PP_LOCAL_GROUPON2 25

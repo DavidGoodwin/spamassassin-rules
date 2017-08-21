@@ -1,0 +1,19 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+body __PP_MACRODOC_01 /\b(payment|transaction|invoice|bill)\b/i
+header __PP_MACRODOC_02 Subject =~ /(transaction|payment|invoice|transfer)/i
+
+body __PP_MACRODOC_03 /(your bank|your account|outstanding)/i
+body __PP_MACRODOC_04 /in (.*) (days?|hours?)/i
+
+# attachment - something.zip
+mimeheader __PP_DOC_ATTACHMENT_1  Content-Type =~ /application\/MSWord/i
+mimeheader __PP_DOC_ATTACHMENT_2  Content-Type =~ /application\/RTF/i
+mimeheader __PP_ATTACHMENT_NAME_1  Content-Type =~ /name=\"[-A-Z0-9]{4,24}\.doc\"/
+mimeheader __PP_ATTACHMENT_NAME_2  Content-Type =~ /name=\"[-A-Z0-9]{4,24}\.rtf\"/
+
+meta PP_LOCAL_MACRODOC (( __PP_MACRODOC_01 + __PP_MACRODOC_02 + __PP_MACRODOC_03 + __PP_MACRODOC_04  )) > 2 && (( (( __PP_DOC_ATTACHMENT_1 + __PP_ATTACHMENT_NAME_1 + __PP_DOC_ATTACHMENT_2 + __PP_ATTACHMENT_NAME_2 )) >= 2  ))
+
+describe PP_LOCAL_MACRODOC Looks like a phony rtf/doc invoice
+score PP_LOCAL_MACRODOC 12.0
+

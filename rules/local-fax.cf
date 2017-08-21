@@ -1,0 +1,20 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+# Fake fax messages
+
+header __PP_LOCAL_FAX_01 Subject =~ /\b(fax|efax) message from/i
+body   __PP_LOCAL_FAX_02 /(click (the|here|secure download)|view this (fax)? message)/i
+body   __PP_LOCAL_FAX_03 /\bfax\b/i
+header __PP_LOCAL_FAX_04 From =~ /fax/i
+header __PP_LOCAL_FAX_05 Reply-To =~ /fax/i
+
+mimeheader __PP_ATTACHMENT_DOC  Content-Type =~ /msword/
+
+
+meta     PP_LOCAL_FAX1 (( __PP_LOCAL_FAX_01 + __PP_LOCAL_FAX_02 + __PP_LOCAL_FAX_03 + __PP_ATTACHMENT_DOC )) > 2
+describe PP_LOCAL_FAX1 FAX possible phishing 
+score    PP_LOCAL_FAX1 3
+
+meta     PP_LOCAL_FAX2 (( __PP_LOCAL_FAX_01 + __PP_LOCAL_FAX_02 + __PP_LOCAL_FAX_03 + __PP_LOCAL_FAX_04 + __PP_LOCAL_FAX_05 + __PP_ATTACHMENT_DOC )) > 3
+describe PP_LOCAL_FAX2 FAX possible phishing 
+score    PP_LOCAL_FAX2 3

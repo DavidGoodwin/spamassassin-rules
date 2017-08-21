@@ -1,0 +1,11 @@
+# PayPal Spam
+
+body   __PP_LOCAL_BT_01 /\bBT\b/i
+header __PP_LOCAL_BT_02 From =~ /btbusiness/i
+header __PP_LOCAL_BT_03 From !~ /\<.*\@.*bt\..*/i # Needs @bt.com or similar From
+header __PP_LOCAL_BT_04 Subject =~ /\b(BT Bill)\b/i
+
+meta PP_LOCAL_BT (( __PP_LOCAL_BT_01 + __PP_LOCAL_BT_02 + __PP_LOCAL_BT_03 + __PP_LOCAL_BT_04 )) > 3
+describe PP_LOCAL_BT Looks like BT phone bill phishing (1)
+score PP_LOCAL_BT 8
+

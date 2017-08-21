@@ -1,0 +1,27 @@
+header   PP_LOCAL_FEDEX_VIRUS_SPAM_1 From =~ /\@feedeex.com/i
+describe PP_LOCAL_FEDEX_VIRUS_SPAM_1 From: Looks like Fedex virus
+score    PP_LOCAL_FEDEX_VIRUS_SPAM_1 8
+
+header   PP_LOCAL_FEDEX_VIRUS_SPAM_2 From =~ /\@fedeex.com/i
+describe PP_LOCAL_FEDEX_VIRUS_SPAM_2 From: Looks like Fedex virus
+score    PP_LOCAL_FEDEX_VIRUS_SPAM_2 8
+
+# Fake fedex mail. Probably with a zip...
+
+header __PP_LOCAL_FEDEX_01     From =~ /FedEx/i
+header __PP_LOCAL_FEDEX_02     From !~ /\<.*\@fedex\..*\>$/i
+
+meta PP_LOCAL_FEDEX (( __PP_LOCAL_FEDEX_01 + __PP_LOCAL_FEDEX_02 )) > 1
+describe PP_LOCAL_FEDEX Looks like a fake FedEx email
+score PP_LOCAL_FEDEX 5
+
+
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+# attachment - something.zip
+mimeheader __ZIP_ATTACHMENT2  Content-Disposition =~ /\.zip/
+
+meta PP_LOCAL_FEDEX_ZIP (( __PP_LOCAL_FEDEX_01 + __PP_LOCAL_FEDEX_02 + __ZIP_ATTACHMENT2 )) > 2
+describe PP_LOCAL_FEDEX_ZIP Looks like a fake FedEx email with Zip
+score PP_LOCAL_FEDEX_ZIP 5
+

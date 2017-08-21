@@ -1,0 +1,6 @@
+# some spam comes from dotmailer
+
+header PP_LOCAL_YME_1 List-Unsubscribe =~ /\@yme1\.co\.uk/i
+describe PP_LOCAL_YME_1 Unwanted bulk mail (from YourMarketExpert)
+score PP_LOCAL_YME_1 7
+

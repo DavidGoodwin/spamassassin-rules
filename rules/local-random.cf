@@ -1,0 +1,22 @@
+
+header __PP_LOCAL_RANDOM_1 Received =~ /PowerMTA/i
+header __PP_LOCAL_RANDOM_2 List-Unsubscribe =~ /[\w]/i
+body   __PP_LOCAL_RANDOM_3 /To forward this email on to a colleague please/i
+body   __PP_LOCAL_RANDOM_4 /To view the full version of this email in html format/i
+body   __PP_LOCAL_RANDOM_5 /To unsubscribe from any future mailings/i
+body   __PP_LOCAL_RANDOM_6 /(Say Goodbye Here|magicalleads.com)/i
+
+
+
+meta PP_LOCAL_RANDOM (( __PP_LOCAL_RANDOM_1 + __PP_LOCAL_RANDOM_2 + __PP_LOCAL_RANDOM_3 + __PP_LOCAL_RANDOM_4 + __PP_LOCAL_RANDOM_5 )) > 3
+describe PP_LOCAL_RANDOM Unwanted Spam (Pensions Age Seminar/Mass mailing)
+score PP_LOCAL_RANDOM 10
+
+
+header PP_SUBJECT_EXCLAMATION Subject =~ /!{2,}/
+describe PP_SUBJECT_EXCLAMATION Multiple exclamations in subject
+score PP_SUBJECT_EXCLAMATION 1
+
+meta PP_LOCAL_SPAMMY_CONTENT (( __PP_LOCAL_RANDOM_6 )) > 0
+describe PP_LOCAL_SPAMMY_CONTENT Spammy content
+score PP_LOCAL_SPAMMY_CONTENT 2

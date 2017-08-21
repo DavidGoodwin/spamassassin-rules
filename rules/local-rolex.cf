@@ -1,0 +1,3 @@
+header   PP_LOCAL_ROLEX_SUBJECT_1     Subject =~ /\w@[-a-z0-9\.]+ Rolex Today\b/i
+describe PP_LOCAL_ROLEX_SUBJECT_1     Subject: Rolex Spam
+score    PP_LOCAL_ROLEX_SUBJECT_1     8

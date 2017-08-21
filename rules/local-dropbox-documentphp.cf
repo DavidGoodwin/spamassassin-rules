@@ -1,0 +1,13 @@
+# Fake fax messages
+
+body   __PP_LOCAL_SECURE_MESSAGE_01 /(secure message|security of messages)/i
+body   __PP_LOCAL_SECURE_MESSAGE_02 /dropbox\/document.php/i
+body   __PP_LOCAL_SECURE_MESSAGE_03 /Click link/i
+body   __PP_LOCAL_SECURE_MESSAGE_04 /https?:/i
+
+meta PP_LOCAL_SECURE_MESSAGE (( __PP_LOCAL_SECURE_MESSAGE_01 + __PP_LOCAL_SECURE_MESSAGE_02 + __PP_LOCAL_SECURE_MESSAGE_03 + __PP_LOCAL_SECURE_MESSAGE_04 )) > 2
+
+describe PP_LOCAL_SECURE_MESSAGE Looks like a SECURE_MESSAGE phishing
+
+score PP_LOCAL_SECURE_MESSAGE 15
+

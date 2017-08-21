@@ -1,0 +1,13 @@
+# Penalise idiots sending white text in an email
+
+rawbody PP_LOCAL_HTML_TEXT_WHITE_SHORT_1 /p style\=\"color: \#FFF\"/ 
+describe PP_LOCAL_HTML_TEXT_WHITE_SHORT_1 Email looks like it contains white text (\#FFF)
+score PP_LOCAL_HTML_TEXT_WHITE_SHORT_1 4
+
+rawbody PP_LOCAL_HTML_TEXT_WHITE_LONG_2 /p style\=\"color: \#FFFFFF;?\"/ 
+describe PP_LOCAL_HTML_TEXT_WHITE_LONG_2 Email looks like it contains white text (\#FFFFFF)
+score PP_LOCAL_HTML_TEXT_WHITE_LONG_2 4
+
+rawbody PP_LOCAL_HTML_TEXT_WHITE_SHORT_3 /BODY bgColor=\#ffffff/i
+describe PP_LOCAL_HTML_TEXT_WHITE_SHORT_3 Email looks like it contains white text (bgcolor)
+score PP_LOCAL_HTML_TEXT_WHITE_SHORT_3 4

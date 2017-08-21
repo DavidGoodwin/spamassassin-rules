@@ -1,0 +1,12 @@
+# Investment/banking emails
+
+body __INVESTMENT_1 /\b((investment|relationship) manager\b)/i
+body __INVESTMENT_2 /\b(essential I|divulge details|discreet proposal|confirm you)\b/i
+body __INVESTMENT_3 /my (private email|initial (letter|contact))/i
+# this isn't very 'exact' but I don't want to list a load of banks etc by name
+body __INVESTMENT_4 /\b(Bank|Hedge Fund)\b/
+
+meta PP_LOCAL_INVESTMENT (( __INVESTMENT_1 + __INVESTMENT_2 + __INVESTMENT_3 + __INVESTMENT_4 )) > 2
+describe PP_LOCAL_INVESTMENT Looks like a Nigerian investment email
+score PP_LOCAL_INVESTMENT 5
+

@@ -1,0 +1,11 @@
+
+header __PP_LOCAL_VANWAREHOUSE_1 X-Mailer =~ /aspNetEmail/i
+header __PP_LOCAL_VANWAREHOUSE_2 Bounce-Path =~ /[0-9]/
+header __PP_LOCAL_VANWAREHOUSE_3 List-Unsubscribe =~ /[a-z]/i
+body   __PP_LOCAL_VANWAREHOUSE_4  /If you no longer wish to receive emails from/i
+body   __PP_LOCAL_VANWAREHOUSE_5  /vanwarehouse/i
+
+
+meta PP_LOCAL_VANWAREHOUSE (( __PP_LOCAL_VANWAREHOUSE_1 + __PP_LOCAL_VANWAREHOUSE_2 + __PP_LOCAL_VANWAREHOUSE_3 + __PP_LOCAL_VANWAREHOUSE_4 + __PP_LOCAL_VANWAREHOUSE_5 )) > 4
+describe PP_LOCAL_VANWAREHOUSE Unwanted Spam (VanWareHouse)
+score PP_LOCAL_VANWAREHOUSE 10

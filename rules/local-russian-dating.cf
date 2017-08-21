@@ -1,0 +1,11 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+body __DATING_01 /\b(dating|online profile|sex)\b/i
+body __DATING_02 /\b(pics|erotic|My name is)\b/i
+
+# attachment - something.jpg
+mimeheader __DATING_IMAGE_ATTACHMENT  Content-Type =~ /image/
+
+meta PP_LOCAL_DATING_01 (( __DATING_01 + __DATING_02 + __DATING_IMAGE_ATTACHMENT )) > 2
+describe PP_LOCAL_DATING_01 Looks like a dating email
+score PP_LOCAL_DATING_01 4.0

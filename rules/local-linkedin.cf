@@ -1,0 +1,10 @@
+# Penalise idiots sending white text in an email
+
+header __LINKEDIN_1 List-Unsubscribe =~ /e.linkedin.com/i
+header __LINKEDIN_2 Subject =~ /\b(try a|free month)\b/i
+header __LINKEDIN_3 Subject =~ /premium professional/i
+
+meta PP_LOCAL_LINKEDIN_1 (( __LINKEDIN_1 + __LINKEDIN_2 + __LINKEDIN_3 )) > 1
+describe PP_LOCAL_LINKEDIN_1 LinkedIn Advert
+score PP_LOCAL_LINKEDIN_1 35.0
+

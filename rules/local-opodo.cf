@@ -1,0 +1,8 @@
+body   __PP_LOCAL_OPODO_01 /no longer want to receive/i
+body   __PP_LOCAL_OPODO_02 /opodo/i
+header __PP_LOCAL_OPODO_03 From =~ /newsletters.opodo.co.uk/i
+
+
+meta PP_LOCAL_OPODO_SPAM_01 (( __PP_LOCAL_OPODO_01 + __PP_LOCAL_OPODO_02 + __PP_LOCAL_OPODO_03 )) > 2
+score PP_LOCAL_OPODO_SPAM_01 10
+describe PP_LOCAL_OPODO_SPAM_01 Looks like spam. (Opodo)

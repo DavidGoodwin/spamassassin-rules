@@ -1,0 +1,31 @@
+# Amazon Spam
+
+header __PP_LOCAL_AMAZON_02 From =~ /Amazon/i
+header __PP_LOCAL_AMAZON_03 From !~ /.*\@(amazon\.co.*|sns\.amazonaws\.com)/i
+
+body   __PP_LOCAL_AMAZON_04 /Amazon\.(com|co\.uk)/i
+header __PP_LOCAL_AMAZON_05 Subject =~ /Your Amazon(.*)Account/i
+
+header __PP_LOCAL_AMAZON_06 Message-ID !~ /amazon/i
+
+body __PP_LOCAL_AMAZON_07 /(restore access|locked|click here|click on the link below|unlock|security)/i
+
+
+# Real amazon mails have this header. I think.
+rawbody __PP_LOCAL_AMAZON_08 /X-AMAZON-MAIL-RELAY-TYPE:/
+
+meta PP_LOCAL_AMAZON  __PP_LOCAL_AMAZON_02 && __PP_LOCAL_AMAZON_03 && __PP_LOCAL_AMAZON_04 && ! __PP_LOCAL_AMAZON_08 
+score PP_LOCAL_AMAZON 5
+describe PP_LOCAL_AMAZON Amazon Phishing (1)
+
+meta PP_LOCAL_AMAZON_1 __PP_LOCAL_AMAZON_02 && __PP_LOCAL_AMAZON_03 
+score PP_LOCAL_AMAZON_1 4
+describe PP_LOCAL_AMAZON_1 Amazon phishing
+
+meta PP_LOCAL_AMAZON_2 __PP_LOCAL_AMAZON_02 && __PP_LOCAL_AMAZON_03 && __PP_LOCAL_AMAZON_05 && __PP_LOCAL_AMAZON_06 
+score PP_LOCAL_AMAZON_2 4
+describe PP_LOCAL_AMAZON_2 Amazon Phishing (2)
+
+meta PP_LOCAL_AMAZON_3 __PP_LOCAL_AMAZON_02 && __PP_LOCAL_AMAZON_03 && __PP_LOCAL_AMAZON_06 && ! __PP_LOCAL_AMAZON_08 && __PP_LOCAL_AMAZON_07
+score PP_LOCAL_AMAZON_3 4
+describe PP_LOCAL_AMAZON_3 Amazon Phishing (3) (click links, dodgy from etc)

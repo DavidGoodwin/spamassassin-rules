@@ -1,0 +1,24 @@
+# Fake tesco clubcard crap
+
+body   __PP_LOCAL_TESCOCLUBCARD_01 /\b(Sainsbury|Tesco)\b/i
+header __PP_LOCAL_TESCOCLUBCARD_02 From =~ /(clubcard|sainsbury|tesco)/i
+header __PP_LOCAL_TESCOCLUBCARD_03 From !~ /@.*(tesco|sainsbury)\..*/i
+header __PP_LOCAL_TESCOCLUBCARD_04 Subject =~ /\b(tesco|sainsbury|clubcard)\b/i
+body   __PP_LOCAL_TESCOCLUBCARD_05 /\b(exclusive|offer|win|gift card|competition)\b/i
+body   __PP_LOCAL_TESCOCLUBCARD_06 /Click here/i
+
+
+meta PP_LOCAL_TESCOCLUBCARD __PP_LOCAL_TESCOCLUBCARD_02 && __PP_LOCAL_TESCOCLUBCARD_03 && (( __PP_LOCAL_TESCOCLUBCARD_01 + __PP_LOCAL_TESCOCLUBCARD_04 + __PP_LOCAL_TESCOCLUBCARD_05 + __PP_LOCAL_TESCOCLUBCARD_06 )) > 3
+
+describe PP_LOCAL_TESCOCLUBCARD Looks like a Tesco phishing
+score PP_LOCAL_TESCOCLUBCARD 8
+
+
+meta PP_LOCAL_TESCOCLUBCARD_1 ! __PP_LOCAL_TESCOCLUBCARD_02 && __PP_LOCAL_TESCOCLUBCARD_03 && (( __PP_LOCAL_TESCOCLUBCARD_01 + __PP_LOCAL_TESCOCLUBCARD_04 + __PP_LOCAL_TESCOCLUBCARD_05 + __PP_LOCAL_TESCOCLUBCARD_06 )) > 3
+
+describe PP_LOCAL_TESCOCLUBCARD_1 Looks like spam
+score PP_LOCAL_TESCOCLUBCARD_1 2
+
+header PP_LOCAL_PROFMAIL List-Unsubscribe =~ /profmail\.org/i
+describe PP_LOCAL_PROFMAIL Spammy sender
+score PP_LOCAL_PROFMAIL 2

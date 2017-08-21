@@ -1,0 +1,6 @@
+# some spam comes from actonsoftware.com
+
+header PP_LOCAL_AOS_1 From =~ /\@actonsoftware.com/i
+describe PP_LOCAL_AOS_1 Unwanted bulk mail (from actonsoftware.com)
+score PP_LOCAL_AOS_1 5
+

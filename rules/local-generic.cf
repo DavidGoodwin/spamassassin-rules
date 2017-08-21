@@ -1,0 +1,11 @@
+header  PP_LOCAL_GENERIC_1 From !~ /\@/
+score   PP_LOCAL_GENERIC_1 1
+describe PP_LOCAL_GENERIC_1 Empty from.
+
+header  PP_LOCAL_GENERIC_2 To !~ /\@/
+score   PP_LOCAL_GENERIC_2 1
+describe PP_LOCAL_GENERIC_2 Empty To.
+
+header  PP_LOCAL_GENERIC_3 Return-Path !~ /\@/
+score   PP_LOCAL_GENERIC_3 1
+describe PP_LOCAL_GENERIC_3 Empty Return-Path

@@ -1,0 +1,14 @@
+# Subject: Hi my friend!
+# From: Elena <made.up.address>
+# Contains crap List-Unsubscribe header.
+
+header __PP_LOCAL_HI_MY_FRIEND_01 Subject =~ /^Hi my friend!$/i
+header __PP_LOCAL_HI_MY_FRIEND_02 List-Unsubscribe =~ /mailto:/i
+body   __PP_LOCAL_HI_MY_FRIEND_03 /My name is Elena/i
+header __PP_LOCAL_HI_MY_FRIEND_04 From =~ /Elena/i
+
+meta PP_LOCAL_HI_MY_FRIEND (( __PP_LOCAL_HI_MY_FRIEND_01 + __PP_LOCAL_HI_MY_FRIEND_02 + __PP_LOCAL_HI_MY_FRIEND_03 + __PP_LOCAL_HI_MY_FRIEND_04 )) > 3
+
+describe PP_LOCAL_HI_MY_FRIEND Looks like a russian spam
+score PP_LOCAL_HI_MY_FRIEND 15
+

@@ -1,0 +1,16 @@
+# Fake O2 bill(s0
+
+header __PP_LOCAL_o2_01 Subject =~ /O2 bill/i
+body   __PP_LOCAL_o2_02 /Your O2 bill for (.*) is now ready/i
+rawbody   __PP_LOCAL_o2_03 /Telefónica/
+
+# Note the negation on this header in the meta rule below. i.e. it can't match @o2.co[m|uk etc]
+header __PP_LOCAL_o2_09 From =~ /@.*o2*\>$/i
+
+meta PP_LOCAL_O2_BILL_PHISHING (( __PP_LOCAL_o2_01 + __PP_LOCAL_o2_02 + __PP_LOCAL_o2_03 + ! __PP_LOCAL_o2_09 )) > 3
+
+describe PP_LOCAL_O2_BILL_PHISHING Looks like a o2 Phishing/virus
+score PP_LOCAL_O2_BILL_PHISHING 15
+
+
+

@@ -1,0 +1,11 @@
+# spammy headers.
+
+
+header __PP_LOCAL_CAR_LEASING_01 X-SG-ID =~ /[a-z]+/i
+header __PP_LOCAL_CAR_LEASING_02 X-SG-EID =~ /[0-9]+/
+rawbody   __PP_LOCAL_CAR_LEASING_03 /emltrk.com/
+
+meta PP_LOCAL_CAR_LEASING (( __PP_LOCAL_CAR_LEASING_01 + __PP_LOCAL_CAR_LEASING_02 + __PP_LOCAL_CAR_LEASING_03 )) > 2
+
+describe PP_LOCAL_CAR_LEASING Looks like mass-mailing/CarLeasing
+score    PP_LOCAL_CAR_LEASING 15

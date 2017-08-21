@@ -1,0 +1,12 @@
+# Switch energy supplier etc.
+
+header __PP_LOCAL_MSGFOCUS_01 Message-ID =~ /msgfocus.com>$/i
+header __PP_LOCAL_MSGFOCUS_02 X-Mailer =~ /MessageFocus/i
+body __PP_LOCAL_MSGFOCUS_03 /msgfocus.com/i
+header __PP_LOCAL_MSGFOCUS_04 Received =~ /msgfocus.com/
+
+meta PP_LOCAL_MSGFOCUS (( __PP_LOCAL_MSGFOCUS_01 + __PP_LOCAL_MSGFOCUS_02 + __PP_LOCAL_MSGFOCUS_03 + __PP_LOCAL_MSGFOCUS_04 )) > 3
+
+describe PP_LOCAL_MSGFOCUS Looks like Spam/MsgFocus
+score PP_LOCAL_MSGFOCUS 20
+

@@ -1,0 +1,11 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+body __RESUME_01 /\b(resume)\b/i
+header __RESUME_02 Subject =~ /resume/i
+
+# attachment - something.zip
+mimeheader __ZIP_ATTACHMENT  Content-Type =~ /x-zip-compressed/
+
+meta PP_LOCAL_YAHOO_RESUME (( __RESUME_01 + __RESUME_02 + __ZIP_ATTACHMENT )) > 2
+describe PP_LOCAL_YAHOO_RESUME Looks like a phony resume/zip file 
+score PP_LOCAL_YAHOO_RESUME 4.0

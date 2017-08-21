@@ -1,0 +1,24 @@
+# spammy headers.
+
+header __SPAMMY_HEADER_1 X-VirtualServerGroup =~ /.*/
+header __SPAMMY_HEADER_2 X-eshot =~ /.*/
+header __SPAMMY_HEADER_3 X-job =~ /[a-z0-9]/i
+header __SPAMMY_HEADER_4 Message-ID =~ /\@ESHOTSERVICES/i
+
+
+meta PP_LOCAL_SPAMMY_HEADERS (( __SPAMMY_HEADER_1 + __SPAMMY_HEADER_2 + __SPAMMY_HEADER_3 + __SPAMMY_HEADER_4  )) > 2
+describe PP_LOCAL_SPAMMY_HEADERS Message headers imply mass-mailing
+score PP_LOCAL_SPAMMY_HEADERS 3
+
+
+
+header __PP_LOCAL_SPAMMY_HEADER2_01 X-AntiAbuse =~ /[a-z]+/i
+header __PP_LOCAL_SPAMMY_HEADER2_02 X-Mailer-SID =~ /[0-9]+/
+header __PP_LOCAL_SPAMMY_HEADER2_03 List-Unsubscribe =~ /[a-z]+/
+header __PP_LOCAL_SPAMMY_HEADER2_04 X-Mailer-Sent-By =~ /[0-9]+/
+body   __PP_LOCAL_SPAMMY_HEADER2_05 /unsubscribe\.php/
+
+meta PP_LOCAL_SPAMMY_HEADERS2 (( __PP_LOCAL_SPAMMY_HEADER2_01 + __PP_LOCAL_SPAMMY_HEADER2_02 + __PP_LOCAL_SPAMMY_HEADER2_03 + __PP_LOCAL_SPAMMY_HEADER2_04 )) > 3
+
+describe PP_LOCAL_SPAMMY_HEADERS2 Looks like mass-mailing/CustomerSends
+score    PP_LOCAL_SPAMMY_HEADERS2 15

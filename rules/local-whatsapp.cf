@@ -1,0 +1,13 @@
+# WHATSAPP
+
+header __PP_LOCAL_WHATSAPP_01 Subject =~ /(Expired|Subscription)/i
+body   __PP_LOCAL_WHATSAPP_02 /\b(subscription|expired|extend)\b/i
+header __PP_LOCAL_WHATSAPP_03 From =~ /Whatsapp/i
+header __PP_LOCAL_WHATSAPP_04 From !~ /@.*(whatsapp|facebook)\..*/i
+
+
+meta PP_LOCAL_WHATSAPP (( __PP_LOCAL_WHATSAPP_01 + __PP_LOCAL_WHATSAPP_02 + __PP_LOCAL_WHATSAPP_03 + __PP_LOCAL_WHATSAPP_04 )) > 3
+
+describe PP_LOCAL_WHATSAPP Looks like a WHATSAPP phishing
+score PP_LOCAL_WHATSAPP 10
+

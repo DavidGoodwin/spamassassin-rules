@@ -1,0 +1,12 @@
+
+header __PP_LOCAL_HOMEBIZPROMO_1 X-JID =~ /[0-9]/
+header __PP_LOCAL_HOMEBIZPROMO_2 X-CID =~ /[0-9]/
+header __PP_LOCAL_HOMEBIZPROMO_3 X-Complaints-To =~ /[a-z]/i
+header __PP_LOCAL_HOMEBIZPROMO_4 List-Unsubscribe =~ /[a-z]/i
+body   __PP_LOCAL_HOMEBIZPROMO_5 /visit the online version/i
+body   __PP_LOCAL_HOMEBIZPROMO_6 /homebizpromo/i
+
+
+meta PP_LOCAL_HOMEBIZPROMO (( __PP_LOCAL_HOMEBIZPROMO_1 + __PP_LOCAL_HOMEBIZPROMO_2 + __PP_LOCAL_HOMEBIZPROMO_3 + __PP_LOCAL_HOMEBIZPROMO_4 + __PP_LOCAL_HOMEBIZPROMO_5 + __PP_LOCAL_HOMEBIZPROMO_6 )) > 4
+describe PP_LOCAL_HOMEBIZPROMO Unwanted Spam (HomeBizPromo)
+score PP_LOCAL_HOMEBIZPROMO 10

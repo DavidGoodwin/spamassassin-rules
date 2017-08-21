@@ -1,0 +1,13 @@
+# Fake fax messages
+
+header __PP_LOCAL_DOCUSIGN_01 Subject =~ /\bDocuSign\b/i
+body   __PP_LOCAL_DOCUSIGN_02 /(Review Document)/i
+body   __PP_LOCAL_DOCUSIGN_03 /\b(sign|review)\b/i
+header __PP_LOCAL_DOCUSIGN_04 From =~ /DocuSign/i
+header __PP_LOCAL_DOCUSIGN_05 Reply-To =~ /DocuSign/i
+
+
+meta     PP_LOCAL_DOCUSIGN1 (( __PP_LOCAL_DOCUSIGN_01 + __PP_LOCAL_DOCUSIGN_02 + __PP_LOCAL_DOCUSIGN_03 + __PP_LOCAL_DOCUSIGN_04 + __PP_LOCAL_DOCUSIGN_05 )) > 3
+describe PP_LOCAL_DOCUSIGN1 DOCUSIGN phishing 
+score    PP_LOCAL_DOCUSIGN1 5
+

@@ -1,0 +1,13 @@
+
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+mimeheader __PP_LOCAL_EXCELVIRUS_FILE_1 Content-Disposition =~ /attachment/
+mimeheader __PP_LOCAL_EXCELVIRUS_FILE_2 Content-Type =~ /vnd\.ms-excel/
+mimeheader __PP_LOCAL_EXCELVIRUS_FILE_3 Content-Disposition =~ /filename=(Hotel|Fax)/
+
+describe PP_LOCAL_EXCELVIRUS_FILE_1 Excel file, with suspicious name
+score PP_LOCAL_EXCELVIRUS_FILE_1 10
+meta PP_LOCAL_EXCELVIRUS_FILE_1 (( __PP_LOCAL_EXCELVIRUS_FILE_1 + __PP_LOCAL_EXCELVIRUS_FILE_2 + __PP_LOCAL_EXCELVIRUS_FILE_3 )) > 2
+
+
+

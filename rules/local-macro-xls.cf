@@ -1,0 +1,11 @@
+loadplugin Mail::SpamAssassin::Plugin::MIMEHeader
+
+# attachment - something.xls
+mimeheader __PP_XLS_ATTACHMENT  Content-Type =~ /application\/vnd.ms-excel/i
+mimeheader __PP_XLS_ATTACHMENT_NAME Content-Type =~ /name=\"SALES[-_A-Z0-9]{16,30}\.xls\"/
+
+meta PP_LOCAL_MACROXLS __PP_XLS_ATTACHMENT && __PP_XLS_ATTACHMENT_NAME
+
+describe PP_LOCAL_MACROXLS Looks like a phony xls invoice
+score PP_LOCAL_MACROXLS 10.0
+

@@ -1,0 +1,6 @@
+# some spam comes from wrmplatform.co.uk
+
+header PP_LOCAL_WRM_1 From =~ /\@.*\.wrmplatform/i
+describe PP_LOCAL_WRM_1 Unwanted bulk mail (from wrmplatform)
+score PP_LOCAL_WRM_1 2
+

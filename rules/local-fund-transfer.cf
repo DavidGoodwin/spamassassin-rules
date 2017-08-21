@@ -1,0 +1,7 @@
+
+body   __PP_LOCAL_FUNDTRANSFER_1  /(bank transfer)/i
+header __PP_LOCAL_FUNDTRANSFER_2  Subject =~ /Fund Transfer/i
+
+meta PP_LOCAL_FUNDTRANSFER (( __PP_LOCAL_FUNDTRANSFER_1 + __PP_LOCAL_FUNDTRANSFER_2 )) > 1
+describe PP_LOCAL_FUNDTRANSFER Unwanted Phishing (looks bogus)
+score PP_LOCAL_FUNDTRANSFER 5

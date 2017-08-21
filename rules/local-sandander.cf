@@ -1,0 +1,10 @@
+# Santander.
+
+header __PP_LOCAL_SANTANDER_01 From =~ /santander/i
+header __PP_LOCAL_SANTANDER_02 From !~ /\<.*\@santander\..*\>$/i
+
+meta PP_LOCAL_SANTANDER (( __PP_LOCAL_SANTANDER_01 + __PP_LOCAL_SANTANDER_02 )) > 1
+describe PP_LOCAL_SANTANDER Looks like bank phishing (santander)
+score PP_LOCAL_SANTANDER 4
+
+
