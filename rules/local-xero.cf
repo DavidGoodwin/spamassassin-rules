@@ -1,0 +1,11 @@
+
+body   __PP_LOCAL_XERO_01 /\bxero\b/i
+header __PP_LOCAL_XERO_02 From =~ /xero/i
+header __PP_LOCAL_XERO_03 From !~ /@.*xero\..*/i
+header __PP_LOCAL_XERO_04 Subject =~ /\b(invoice)\b/i
+body   __PP_LOCAL_XERO_05 /Click here/i
+
+meta PP_LOCAL_XERO_1 __PP_LOCAL_XERO_01 && __PP_LOCAL_XERO_02 && __PP_LOCAL_XERO_03 && __PP_LOCAL_XERO_04 && __PP_LOCAL_XERO_05 
+describe PP_LOCAL_XERO_1 Looks like a xero phishing 
+score PP_LOCAL_XERO_1 3
+

@@ -1,0 +1,11 @@
+# Contains sharepoint url, but claims to be an invoice. 
+
+header __PP_LOCAL_FAKE_INVOICE_01 Subject =~ /\binvoice\b/i
+body   __PP_LOCAL_FAKE_INVOICE_02 /\b(billing|invoice)\b/i
+rawbody   __PP_LOCAL_FAKE_INVOICE_03 /\.sharepoint\.com/i
+
+meta PP_LOCAL_FAKE_INVOICE_1 (( __PP_LOCAL_FAKE_INVOICE_01 + __PP_LOCAL_FAKE_INVOICE_02 + __PP_LOCAL_FAKE_INVOICE_03 )) > 2
+
+describe PP_LOCAL_FAKE_INVOICE_1 Looks like a fake invoice
+score    PP_LOCAL_FAKE_INVOICE_1 4
+

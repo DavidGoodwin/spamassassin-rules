@@ -1,0 +1,10 @@
+
+body   __PP_LOCAL_OPUSENERGY_01 /\b(opus|opusenergy)\b/i
+header __PP_LOCAL_OPUSENERGY_02 From =~ /opus/i
+header __PP_LOCAL_OPUSENERGY_03 From !~ /@.*opusenergy\.co*/i
+header __PP_LOCAL_OPUSENERGY_04 Subject =~ /\b(invoice)\b/i
+
+meta PP_LOCAL_OPUSENERGY_1 __PP_LOCAL_OPUSENERGY_01 && __PP_LOCAL_OPUSENERGY_02 && __PP_LOCAL_OPUSENERGY_03 && __PP_LOCAL_OPUSENERGY_04 
+describe PP_LOCAL_OPUSENERGY_1 Looks like a opusenergy phishing 
+score PP_LOCAL_OPUSENERGY_1 3
+
