@@ -1,0 +1,7 @@
+
+header __PP_LOCAL_NATWEST_1 From =~ /natwest/i
+header __PP_LOCAL_NATWEST_2 From !~ /\@natwest\..*/i
+
+meta PP_LOCAL_NATWEST_1 (( __PP_LOCAL_NATWEST_1 + __PP_LOCAL_NATWEST_2 )) > 1
+describe PP_LOCAL_NATWEST_1 Probable NatWest Phishing
+score PP_LOCAL_NATWEST_1 3

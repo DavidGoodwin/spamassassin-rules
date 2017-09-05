@@ -2,8 +2,8 @@
 
 header __PP_LOCAL_WHATSAPP_01 Subject =~ /(Expired|Subscription)/i
 body   __PP_LOCAL_WHATSAPP_02 /\b(subscription|expired|extend)\b/i
-header __PP_LOCAL_WHATSAPP_03 From =~ /Whatsapp/i
-header __PP_LOCAL_WHATSAPP_04 From !~ /@.*(whatsapp|facebook)\..*/i
+header __PP_LOCAL_WHATSAPP_03 From =~ /Whats.?app/i
+header __PP_LOCAL_WHATSAPP_04 From !~ /@.*(whats.?app|facebook)\..*/i
 
 
 meta PP_LOCAL_WHATSAPP (( __PP_LOCAL_WHATSAPP_01 + __PP_LOCAL_WHATSAPP_02 + __PP_LOCAL_WHATSAPP_03 + __PP_LOCAL_WHATSAPP_04 )) > 3
