@@ -1,0 +1,12 @@
+# http://uribl.com/usage.shtml
+urirhssub       URIBL_BLACK  multi.uribl.com.        A   2
+body            URIBL_BLACK  eval:check_uridnsbl('URIBL_BLACK')
+describe        URIBL_BLACK  Contains an URL listed in the URIBL blacklist
+tflags          URIBL_BLACK  net
+score           URIBL_BLACK  5.0
+
+urirhssub       URIBL_GREY  multi.uribl.com.        A   4
+body            URIBL_GREY  eval:check_uridnsbl('URIBL_GREY')
+describe        URIBL_GREY  Contains an URL listed in the URIBL greylist
+tflags          URIBL_GREY  net
+score           URIBL_GREY  4
