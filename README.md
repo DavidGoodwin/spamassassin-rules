@@ -16,7 +16,7 @@ Restart SpamAssassin if necessary.
 cd rules ; spamassassin --lint -L -t -C . 
 cp rules/* /etc/spamassassin/
 cat /path/to/some/email.txt | spamassassin -tL ```
-
+```
 or
 
 ``` spamassassin -tLD < /path/to/some/email.txt 2>&1 | grep PP_```
