@@ -8,4 +8,15 @@ They (should) all have a PP\_ prefix ...
 
 Copy rules/* to /etc/spamassassin ... there are probably better ways but this works for me.
 
+Restart SpamAssassin if necessary.
 
+# testing
+
+```
+cd rules ; spamassassin --lint -L -t -C . 
+cp rules/* /etc/spamassassin/
+cat /path/to/some/email.txt | spamassassin -tL ```
+
+or
+
+``` spamassassin -tLD < /path/to/some/email.txt 2>&1 | grep PP_```
